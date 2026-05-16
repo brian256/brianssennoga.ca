@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import bucketData from '../content/bucket/items.json';
+
+/*
+  HOW TO UPDATE THE BUCKET LIST
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Edit: src/content/bucket/items.json
+
+  To ADD an item — append to the relevant category's "items" array:
+    { "num": "1.4", "title": "...", "detail": "...", "status": "open" }
+
+  Status values:
+    "open"        → grey badge (not started)
+    "in-progress" → gold badge (underway)
+    "done"        → strikethrough badge (completed — write a post about it!)
+
+  To REORDER — change the "num" values. Items render in array order.
+  To MARK DONE — change status to "done" and write a LinkedIn post or essay.
+
+  Commit → GitHub Actions rebuilds automatically.
+*/
+
+type Status = 'open' | 'in-progress' | 'done';
+const badgeLabel: Record<Status, string> = {
+  'open': 'Open',
+  'in-progress': 'In progress',
+  'done': 'Done ✓',
+};
+---
+
+<BaseLayout
+  title="Bucket List — Brian Ssennoga · Six degrees away from everything I want to do"
+  description="A standing invitation to my professional network — the highest calling for a professional network is to do something for someone that feels like a trump card only you can pull."
+  pathname="/bucket-list/"
+>
+
+  <!-- Page header -->
+  <div style="background: var(--color-bg); padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: 1.5rem;">
+    <div class="container">
+      <span class="eyebrow">Bucket List</span>
+      <h1 style="font-size: var(--step-4); margin-bottom: 0.75rem;">
+        Six degrees away from everything I want to do.
+      </h1>
+    </div>
+  </div>
+
+  <!-- Intro / framing -->
+  <div class="bucket-intro">
+    <div class="container">
+      <p class="bucket-intro__pull">
+        "The highest calling for a professional network is to do something for someone
+        that feels like a trump card only you can pull."
+      </p>
+      <p>
+        I believe in the six degrees of separation. And I believe the most underused function
+        of a professional network isn't who you know for a job — it's who you know for a moment
+        that changes everything. Someone in your network can unlock something for me that no
+        amount of hustle on my part ever could. And vice versa.
+      </p>
+      <p>
+        This list is a standing invitation. If you see something here you can move — a
+        connection, a referral, a room I can't get into on my own — reach out on LinkedIn.
+        I'll return the favour, and I'll write about it when it happens.
+      </p>
+    </div>
+  </div>
+
+  <!-- The list -->
+  <section style="background: var(--color-bg);">
+    <div class="container">
+      <div class="bucket-categories">
+        {bucketData.categories.map(cat => (
+          <div class="bucket-cat">
+            <h3>
+              <span class="cat-num">{cat.num} · </span>{cat.title}
+            </h3>
+            <div>
+              {cat.items.map(item => (
+                <div class="bucket-item">
+                  <span class="bucket-item__num">{item.num}</span>
+                  <div>
+                    <span class="bucket-item__title">{item.title}</span>
+                    <span class="bucket-item__detail">{item.detail}</span>
+                  </div>
+                  <span class={`bucket-badge badge--${item.status as Status}`}>
+                    {badgeLabel[item.status as Status]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="bucket-cta">
+        <p>
+          See something on this list you can move? A connection, a room, a referral —
+          even half a degree closer than I am now. I want to hear from you. And when it
+          happens, I'll write about it.
+        </p>
+        <a href="https://www.linkedin.com/in/bssennoga" target="_blank" rel="noopener" class="btn btn--primary">
+          Connect on LinkedIn <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
