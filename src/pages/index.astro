@@ -1,40 +1,210 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allWriting = await getCollection('writing', ({ data }) => !data.draft);
+const latestWriting = allWriting
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3);
+
+const allThoughts = await getCollection('thoughts');
+const latestThoughts = allThoughts
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 4);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const chapters = [
+  {
+    n: '01', label: 'Foundation', title: 'My Roots & Upbringing', orgs: 'Uganda',
+    body: `Born and raised in Uganda. The formative years that shaped a particular way of seeing — where systems worked and where they didn't, who they served and who they left out. Every piece of work since has been shaped by that early lens.`,
+    proof: [
+      'Grew up navigating institutions not built with everyone in mind',
+      'Developed an early instinct for what practical help actually looks like',
+      'The through-line for everything that came next',
+    ],
+    img: null,
+  },
+  {
+    n: '02', label: 'Anchor', title: 'Family', orgs: 'Edmonton, Alberta · Canada',
+    body: `The work is personal because the life is personal. Husband, father, and strategic advisor to the people closest to me — including daughter Gabriella, whose culinary career path is a live case study in the Human Capital Development work now offered through Olympia & Associates.`,
+    proof: [
+      'Relocated family to Edmonton — the Canada chapter in full motion',
+      'Daughters Samara and Gabriella — first HS Career Consulting proof-of-concept',
+      'Haven Icecream — family venture; Brian as Strategic Advisor',
+    ],
+    img: null,
+  },
+  {
+    n: '03', label: 'Sector', title: 'Development Sector Work',
+    orgs: 'Watoto · EGPAF · Global Health Corps',
+    body: `A decade of field-level work across East Africa's most significant Development and Health organisations. This is where the lesson landed: the gap between a well-funded programme and a working one is almost always a human capital and systems problem — not a resource problem.`,
+    proof: [
+      'Watoto — community development and child care programmes, Uganda',
+      'EGPAF (Elizabeth Glaser Pediatric AIDS Foundation) — health programme delivery',
+      'Global Health Corps — fellowship; leadership and systems lens across Africa',
+    ],
+    img: 'Image placeholder — field work / development sector · East Africa',
+  },
+  {
+    n: '04', label: 'Sector', title: 'Technology Sector Work',
+    orgs: 'Watoto · Medic · LMH · Guild Digital Uganda · Amii',
+    body: `From managing information systems inside a large NGO to building one from scratch for the refugee health sector. Guild Digital Uganda's flagship — rCHMIS — served 780,000+ refugees at 83% health worker adoption. The lesson: careful ICT systems beat clever ones at scale. Now working on AI and Machine Learning policy through Olympia & Associates.`,
+    proof: [
+      'Watoto & LMH — NGO information systems management, Uganda',
+      'Medic — open-source community health technology',
+      'Guild Digital Uganda — rCHMIS: 780K+ refugees, 83% adoption, MoH integration',
+      'Amii (Alberta Machine Intelligence Institute) — AI ecosystem, Edmonton',
+    ],
+    img: 'Image placeholder — rCHMIS / Technology & ICT work · Uganda',
+  },
+  {
+    n: '05', label: 'Now', title: 'Human Capital Development',
+    orgs: 'Global Health Corps · Kampala Leadership Hub · Olympia & Associates',
+    body: `The thread that ties everything together — from fellowship programming at Global Health Corps to founding KLH in Kampala, to building Olympia & Associates in Edmonton. Five practice areas. One consistent question: does this actually reach the person it's designed for?`,
+    proof: [
+      'KLH — full management course; career coaching for young leaders (Kampala, 2018)',
+      'Olympia & Associates — AI Policy, Career Consulting, Professional Development, Newcomer Pathways',
+      'PhD path in progress — LLM adoption in nonprofits, University of Alberta',
+    ],
+    img: null,
+  },
+];
 ---
 
 <BaseLayout
   title="Brian Ssennoga — AI Literacy, Policy & Governance, and Human Capital Development · Edmonton, Alberta"
   pathname="/"
 >
+
+  {/* ── HERO ── */}
   <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-text">
-        <h1 class="hero-title">
+    <div class="container hero__grid">
+      <div>
+        <h1 class="hero__title">
           Edmonton-based consultant working on
           <span class="gold">AI Literacy, Policy &amp; Governance,</span>
           and Human Capital Development — including
-          <span class="gold">helping Newcomer professionals, couples, and families thrive in Canada.</span>
+          <span class="gold">helping Newcomer professionals, couples, and families </class> thrive in Canada.</span>
         </h1>
-        <p class="hero-loc">Edmonton, Alberta · by way of Kampala, Uganda</p>
-        <div class="hero-cta">
-          <a href="/written-thoughts/" class="btn btn--primary">
+        <p class="hero__location">Edmonton, Alberta. By way of Kampala, Uganda</p>
+        <div class="hero__cta">
+          <a href="#thoughts" class="btn btn--primary">
             My Written Thoughts <span class="arrow" aria-hidden="true">→</span>
           </a>
         </div>
       </div>
-      <div class="hero-portrait-wrap">
-        <img
-          src="/portrait.jpg"
-          alt="Brian Ssennoga — consultant, Edmonton, Alberta"
-          class="portrait-img"
-          width="520"
-          height="650"
-          loading="eager"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
-        />
-        <!-- Placeholder shown if portrait.jpg is missing -->
-        <div class="portrait-placeholder" style="display:none"></div>
+      <div>
+        <div class="portrait" aria-label="Portrait of Brian Ssennoga — placeholder until headshot is added"></div>
       </div>
     </div>
   </section>
+
+  {/* ── HOW I GOT HERE ── */}
+  <section id="chapters">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">How I Got Here</span>
+        <h2>Five pivotal moments</h2>
+        <p class="lede">Building useful systems for people the system usually skips.</p>
+      </div>
+
+      <div class="chapters">
+        {chapters.map((c) => (
+          <article class="chapter">
+            <div class="chapter__index">
+              {c.n}
+              <small>{c.label}</small>
+            </div>
+            <div class="chapter__body">
+              <h3 class="chapter__title">{c.title}</h3>
+              <p class="chapter__orgs">{c.orgs}</p>
+              <p>{c.body}</p>
+              {c.img && (
+                <div class="chapter__img" data-label={c.img} aria-hidden="true"></div>
+              )}
+              <ul class="chapter__proof">
+                {c.proof.map(p => <li>{p}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p style="margin-top: 2rem;">
+        <a href="/bio/" class="inline">Read the full story on the Bio page →</a>
+      </p>
+    </div>
+  </section>
+
+  {/* ── MY WRITTEN THOUGHTS — short-form ── */}
+  <section id="thoughts" style="background: var(--color-bg-deep);">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">My Written Thoughts</span>
+        <h2>Short-form</h2>
+        <p class="lede">
+          Real-time thinking on AI, Governance, Policy, and Human Capital Development.
+          Full threads live on LinkedIn — these are the ones worth following back.
+        </p>
+      </div>
+
+      {latestThoughts.length === 0 ? (
+        <p style="color: var(--color-muted); font-style: italic;">
+          Thoughts feed coming soon. Find me on
+          <a href="https://www.linkedin.com/in/bssennoga" class="inline" target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      ) : (
+        <div class="card-list">
+          {latestThoughts.map(t => (
+            <a href={t.data.url} target="_blank" rel="noopener" class="card-list__item">
+              <div class="card-list__meta">
+                <span>{fmtDate(t.data.date)}</span>
+                {t.data.tag && <span class="tag">{t.data.tag}</span>}
+                <span>{t.data.source}</span>
+              </div>
+              <h3 class="card-list__title">{t.data.title}</h3>
+              <p class="card-list__excerpt">{t.data.excerpt}</p>
+              <span class="card-list__more">
+                Read on {t.data.source} <span class="arrow" aria-hidden="true">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  {/* ── MY WRITTEN THOUGHTS — long-form ── */}
+  <section id="writing">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Long-form</span>
+        <h2>Essays &amp; articles</h2>
+        <p class="lede">Drafted patiently. Published when the argument holds together.</p>
+      </div>
+
+      {latestWriting.length === 0 ? (
+        <p style="color: var(--color-muted); font-style: italic;">First essay coming soon.</p>
+      ) : (
+        <div class="card-list">
+          {latestWriting.map(w => (
+            <a href={`/writing/${w.slug}/`} class="card-list__item">
+              <div class="card-list__meta">
+                <span>{fmtDate(w.data.date)}</span>
+                {w.data.tags.length > 0 && <span class="tag">{w.data.tags[0]}</span>}
+              </div>
+              <h3 class="card-list__title">{w.data.title}</h3>
+              <p class="card-list__excerpt">{w.data.description}</p>
+              <span class="card-list__more">
+                Read <span class="arrow" aria-hidden="true">→</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
 </BaseLayout>
