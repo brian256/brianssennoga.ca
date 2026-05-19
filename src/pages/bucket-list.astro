@@ -7,16 +7,17 @@ import bucketData from '../content/bucket/items.json';
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   Edit: src/content/bucket/items.json
 
-  To ADD an item — append to the relevant category's "items" array:
+  Add an item: append to the relevant category's "items" array:
     { "num": "1.4", "title": "...", "detail": "...", "status": "open" }
 
-  Status values:
-    "open"        → grey badge (not started)
-    "in-progress" → gold badge (underway)
-    "done"        → strikethrough badge (completed — write a post about it!)
+  Status values: "open" | "in-progress" | "done"
 
-  To REORDER — change the "num" values. Items render in array order.
-  To MARK DONE — change status to "done" and write a LinkedIn post or essay.
+  To add the mountain climb photo:
+    1. Copy the photo to public/mountain.jpg
+    2. Change <div class="mountain-img"> to:
+       <div class="mountain-img mountain-img--photo">
+         <img src="/mountain.jpg" alt="Mountain climb" />
+       </div>
 
   Commit → GitHub Actions rebuilds automatically.
 */
@@ -35,55 +36,52 @@ const badgeLabel: Record<Status, string> = {
   pathname="/bucket-list/"
 >
 
-  <!-- Page header -->
-  <div style="background: var(--color-bg); padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: 1.5rem;">
-    <div class="container">
-      <span class="eyebrow">Bucket List</span>
-      <h1 style="font-size: var(--step-4); margin-bottom: 0.75rem;">
-        Six degrees away from everything I want to do.
-      </h1>
-    </div>
+  <div class="bucket-header">
+    <span class="eyebrow">Bucket List</span>
+    <h1>Six degrees away from everything I want to do.</h1>
   </div>
 
-  <!-- Intro / framing -->
+  <!-- Intro: text left, mountain image right -->
   <div class="bucket-intro">
-    <div class="container">
-      <p class="bucket-intro__pull">
-        "The highest calling for a professional network is to do something for someone
-        that feels like a trump card only you can pull."
-      </p>
-      <p>
-        I believe in the six degrees of separation. And I believe the most underused function
-        of a professional network isn't who you know for a job — it's who you know for a moment
-        that changes everything. Someone in your network can unlock something for me that no
-        amount of hustle on my part ever could. And vice versa.
-      </p>
-      <p>
-        This list is a standing invitation. If you see something here you can move — a
-        connection, a referral, a room I can't get into on my own — reach out on LinkedIn.
-        I'll return the favour, and I'll write about it when it happens.
-      </p>
+    <div class="bucket-intro-inner">
+      <div>
+        <p class="bucket-pull">
+          "The highest calling for a professional network is to do something for someone
+          that feels like a trump card only you can pull."
+        </p>
+        <p>
+          I believe in the six degrees of separation. And I believe the most underused
+          function of a professional network isn't who you know for a job — it's who you
+          know for a moment that changes everything. Someone in your network can unlock
+          something for me that no amount of hustle on my part ever could.
+        </p>
+        <p>
+          This list is a standing invitation. If you see something here you can move — a
+          connection, a referral, a room I can't get into on my own — reach out on LinkedIn.
+          I'll return the favour.
+        </p>
+      </div>
+      <!-- Mountain climb image — replace placeholder with real photo when ready -->
+      <div class="mountain-img" aria-hidden="true"></div>
     </div>
   </div>
 
   <!-- The list -->
-  <section style="background: var(--color-bg);">
-    <div class="container">
-      <div class="bucket-categories">
+  <div class="bucket-list-sec">
+    <div class="bucket-inner">
+      <div class="bucket-cats">
         {bucketData.categories.map(cat => (
-          <div class="bucket-cat">
-            <h3>
-              <span class="cat-num">{cat.num} · </span>{cat.title}
-            </h3>
+          <div class="bcat">
+            <h3><span class="cn">{cat.num} · </span>{cat.title}</h3>
             <div>
               {cat.items.map(item => (
-                <div class="bucket-item">
-                  <span class="bucket-item__num">{item.num}</span>
+                <div class="bi">
+                  <span class="bi-num">{item.num}</span>
                   <div>
-                    <span class="bucket-item__title">{item.title}</span>
-                    <span class="bucket-item__detail">{item.detail}</span>
+                    <span class="bi-title">{item.title}</span>
+                    <span class="bi-detail">{item.detail}</span>
                   </div>
-                  <span class={`bucket-badge badge--${item.status as Status}`}>
+                  <span class={`badge b-${item.status === 'in-progress' ? 'ip' : item.status}`}>
                     {badgeLabel[item.status as Status]}
                   </span>
                 </div>
@@ -93,18 +91,18 @@ const badgeLabel: Record<Status, string> = {
         ))}
       </div>
 
-      <!-- CTA -->
       <div class="bucket-cta">
         <p>
           See something on this list you can move? A connection, a room, a referral —
-          even half a degree closer than I am now. I want to hear from you. And when it
-          happens, I'll write about it.
+          even half a degree closer than I am now. Reach out on LinkedIn. If it happens,
+          I'll write about it — with your permission, I'll acknowledge your role. If
+          you'd rather stay anonymous, that works too. Either way, the favour will be returned.
         </p>
         <a href="https://www.linkedin.com/in/bssennoga" target="_blank" rel="noopener" class="btn btn--primary">
           Connect on LinkedIn <span class="arrow" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
 </BaseLayout>

@@ -23,17 +23,17 @@ const fmtDate = (d: Date) =>
   description={entry.data.description}
   pathname={`/writing/${entry.slug}/`}
 >
-  <div style="background: var(--color-bg);">
-    <div class="container">
+  <div style="background: var(--bg);">
+    <div class="w">
       <div class="prose-wrap">
-        <p class="prose__meta">
+        <p class="prose-meta">
           {fmtDate(entry.data.date)}
           {entry.data.tags.length > 0 && <span> · {entry.data.tags.join(' · ')}</span>}
         </p>
         <h1>{entry.data.title}</h1>
         <p class="deck">{entry.data.description}</p>
         <Content />
-        <a href="/#writing" class="prose__back">← My Written Thoughts</a>
+        <a href="/written-thoughts/" class="prose-back">← My Written Thoughts</a>
       </div>
     </div>
   </div>
