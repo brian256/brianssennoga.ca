@@ -12,13 +12,7 @@ import bucketData from '../content/bucket/items.json';
 
   Status values: "open" | "in-progress" | "done"
 
-  To add the mountain climb photo:
-    1. Copy the photo to public/mountain.jpg
-    2. Change <div class="mountain-img"> to:
-       <div class="mountain-img mountain-img--photo">
-         <img src="/mountain.jpg" alt="Mountain climb" />
-       </div>
-
+  Mountain photo is at public/bucketlist_mountain.jpg
   Commit → GitHub Actions rebuilds automatically.
 */
 
@@ -41,7 +35,7 @@ const badgeLabel: Record<Status, string> = {
     <h1>Six degrees away from everything I want to do.</h1>
   </div>
 
-  <!-- Intro: text left, mountain image right -->
+  <!-- Intro: text left, mountain photo right -->
   <div class="bucket-intro">
     <div class="bucket-intro-inner">
       <div>
@@ -61,8 +55,16 @@ const badgeLabel: Record<Status, string> = {
           I'll return the favour.
         </p>
       </div>
-      <!-- Mountain climb image — replace placeholder with real photo when ready -->
-      <div class="mountain-img" aria-hidden="true"></div>
+
+      <!-- Mountain climb photo -->
+      <div class="mountain-img-wrap">
+        <img
+          src="/bucketlist_mountain.jpg"
+          alt="Mountain climb — one item on the list"
+          class="mountain-photo"
+          loading="lazy"
+        />
+      </div>
     </div>
   </div>
 
@@ -96,10 +98,31 @@ const badgeLabel: Record<Status, string> = {
           See something on this list you can move? A connection, a room, a referral —
           even half a degree closer than I am now. Reach out on LinkedIn. If it happens,
           I'll write about it — with your permission, I'll acknowledge your role. If
-          you'd rather stay anonymous, that works too. Either way, the favour will be paid forward, or returned.
+          you'd rather stay anonymous, that works too. Either way, the favour will be returned.
         </p>
+        <a href="https://www.linkedin.com/in/bssennoga" target="_blank" rel="noopener" class="btn btn--primary">
+          Connect on LinkedIn <span class="arrow" aria-hidden="true">→</span>
+        </a>
       </div>
     </div>
   </div>
 
 </BaseLayout>
+
+<style>
+  .mountain-img-wrap {
+    flex-shrink: 0;
+  }
+  .mountain-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--rule);
+    display: block;
+  }
+  @media (max-width: 580px) {
+    .mountain-photo { aspect-ratio: 16/9; }
+  }
+</style>
