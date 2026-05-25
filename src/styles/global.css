@@ -401,3 +401,19 @@ section { padding-block: clamp(3rem, 6vw, 5rem); }
 /* ── Focus / a11y ── */
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } html { scroll-behavior: auto; } }
+
+/* ── Series navigation (Newcomer series & multi-part essays) ── */
+.series-nav {
+  background: var(--bg-deep);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  padding: .875rem 1.1rem;
+  margin: 2rem 0;
+  font-family: var(--fb);
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.series-nav strong { color: var(--ink); font-weight: 600; }
+.series-nav a { color: var(--gold); border-bottom: 1px solid color-mix(in oklab, var(--gold) 35%, transparent); }
+.series-nav a:hover { color: var(--gold-deep); }
