@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const chapters = [
+  {
+    n: '01', label: 'Foundation',
+    title: 'My Roots & Upbringing',
+    orgs: 'Uganda',
+    narrative: [
+      'Born and raised in Kampala, Uganda. The formative years shaped by a single mother (mostly), and a village — left me with a particular way of seeing things. Some systems worked and some didn\'t, some people got served, and others were left out.',
+      'Every piece of work since has been shaped by that early lens — the instinct for what practical help actually looks like, and the frustration when well-intentioned systems miss the people they claim to serve.',
+    ],
+    img: '/bio_myroots.jpg',
+    imgAlt: 'Running at sunset — Uganda hills, early years',
+  },
+  {
+    n: '02', label: 'Anchor',
+    title: 'Family',
+    orgs: 'Edmonton, Alberta · Canada',
+    narrative: [
+      'The work is personal because life is personal. Husband, father, brother, friend, collaborator and strategic advisor to the people closest to me — including daughter Gabriella, whose culinary career path is a live case study in the Human Capital Development work now offered through Olympia & Associates.',
+      'Relocating to Edmonton with family was the Canada chapter beginning in full motion. The city, the country, and the people we\'ve built a community with here are the daily anchor.',
+    ],
+    img: '/family3.jpg',
+    imgAlt: 'Share a Coke with Brian, Gabriella, Samara, Keana, Fifi',
+  },
+  {
+    n: '03', label: 'Sector',
+    title: 'Development Sector Work',
+    orgs: 'Watoto · EGPAF · Global Health Corps · Medic',
+    narrative: [
+      'A decade of field-level work across East Africa\'s most significant Development and Health organisations. Watoto, the Elizabeth Glaser Pediatric AIDS Foundation, and Medic Mobile — each engagement sharpened the diagnostic instinct and deepened the commitment to the people implementing policy, not just writing it.',
+      'This is where the lesson landed: the gap between a well-funded programme and a working one is almost always a human capital and systems problem — not a resource problem.',
+    ],
+    img: '/bio_development.jpg',
+    imgAlt: 'Brian Ssennoga at Midigo Health Centre IV, Yumbe District — development sector field work',
+  },
+  {
+    n: '04', label: 'Now',
+    title: 'Human Capital Development',
+    orgs: 'Global Health Corps · Kampala Leadership Hub · Olympia & Associates',
+    narrative: [
+      'The thread that ties everything together. From fellowship programming at Global Health Corps to founding the Kampala Leadership Hub in 2018 — a management consulting practice that delivered career coaching and a full management course for young team leaders and small business owners.',
+      'After relocating to Edmonton, Olympia & Associates was established as a registered Alberta technology and business consulting practice. For people who know me, you know that I love computers, but I love people more. This is why my passion remains central for human capital development — whether it\'s a check-in or a system, one consistent theme remains: does this actually reach the person it was designed for?',
+    ],
+    img: '/bio_people.jpg',
+    imgAlt: 'Leadership training session — Kampala Leadership Hub',
+  },
+  {
+    n: '05', label: 'Sector',
+    title: 'Technology Sector Work',
+    orgs: 'Watoto · Medic · LMH · Guild Digital Uganda · Amii',
+    narrative: [
+      'Information systems management at Watoto and LMH provided the NGO-sector ICT foundation. Medic — a global open-source community health technology organisation — introduced digital health at scale.',
+      'My most substantive technology work came through Guild Digital Uganda — a registered nonprofit technology startup with seven staff and three years of sustained operation. The flagship product, rCHMIS, served 780,000+ refugees at 83% health worker adoption, integrated with Uganda\'s Ministry of Health and nearly extended into Rwanda under the Health Techhub. When I pivoted, I was already at the cusp of asking what was possible with AI and ML, and so naturally I found my new home at Amii — the Alberta Machine Intelligence Institute, which has connected the AI and Machine Learning ecosystem in Alberta to the world. At Amii, I can immerse daily into work that is central to how I desire to influence the world — AI Ethics, Literacy, Policy and Governance. This is my new voice, and expression.',
+    ],
+    img: '/bio_technology2.jpg',
+    imgAlt: 'Brian Ssennoga training Village Health Teams — community health technology',
+  },
+];
+---
+
+<BaseLayout
+  title="How I Got Here — Brian Ssennoga"
+  description="Five pivotal moments across Uganda and Canada — the roots, the family, the development and technology sector work, and the human capital thread that ties it all together."
+  pathname="/how-i-got-here/"
+>
+  <section style="padding-block: clamp(2.5rem, 5vw, 4rem); background: var(--bg);">
+    <div class="w">
+      <div class="section-head">
+        <span class="eyebrow">How I Got Here</span>
+        <h2>Five pivotal moments</h2>
+        <p class="lede">Building useful systems for people the system usually skips.</p>
+      </div>
+
+      <div class="chapters-list">
+        {chapters.map(c => (
+          <article class="chapter">
+            <div class="ch-num">
+              {c.n}
+              <small>{c.label}</small>
+            </div>
+            <div>
+              <h3 class="ch-title">{c.title}</h3>
+              <p class="ch-orgs">{c.orgs}</p>
+              <div class="ch-narrative">
+                {c.narrative.map(para => <p>{para}</p>)}
+              </div>
+              {c.img && (
+                <div class="ch-img-wrap">
+                  <img
+                    src={c.img}
+                    alt={c.imgAlt}
+                    class="ch-photo"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <p style="margin-top: 2rem;">
+        <a href="/bio/" class="link">Read the full long-form story on the Bio page →</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .ch-img-wrap {
+    margin-top: 1.5rem;
+    max-width: 28rem;
+  }
+  .ch-photo {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--rule);
+    display: block;
+  }
+</style>

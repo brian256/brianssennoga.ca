@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import bucketData from '../content/bucket/items.json';
+
+/*
+  HOW TO UPDATE THE BUCKET LIST
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Edit: src/content/bucket/items.json
+
+  Add an item: append to the relevant category's "items" array:
+    { "num": "1.4", "title": "...", "detail": "...", "status": "open" }
+
+  Status values: "open" | "in-progress" | "done"
+
+  Mountain photo is at public/bucketlist_mountain.jpg
+  Commit → GitHub Actions rebuilds automatically.
+*/
+
+type Status = 'open' | 'in-progress' | 'done';
+const badgeLabel: Record<Status, string> = {
+  'open': 'Open',
+  'in-progress': 'In progress',
+  'done': 'Done ✓',
+};
+---
+
+<BaseLayout
+  title="Bucket List — Brian Ssennoga · Six degrees away from everything I want to do"
+  description="A standing invitation to my professional network — the highest calling for a professional network is to do something for someone that feels like a trump card only you can pull."
+  pathname="/bucket-list/"
+>
+
+  <div class="bucket-header">
+    <span class="eyebrow">Bucket List</span>
+    <h1>Six degrees away from everything I want to do.</h1>
+  </div>
+
+  <!-- Intro: text left, mountain photo right -->
+  <div class="bucket-intro">
+    <div class="bucket-intro-inner">
+      <div>
+        <p class="bucket-pull">
+          "The highest calling for a professional network is to do something for someone
+          that feels like a trump card only you can pull."
+        </p>
+        <p>
+          I believe in the six degrees of separation. And I believe the most underused
+          function of a professional network isn't who you know for a job — it's who you
+          know for a moment that changes everything. Someone in your network can unlock
+          something for me that no amount of hustle on my part ever could.
+        </p>
+        <p>
+          This list is a standing invitation. If you see something here you can move — a
+          connection, a referral, a room I can't get into on my own — reach out on LinkedIn.
+          I'll return the favour.
+        </p>
+      </div>
+
+      <!-- Mountain climb photo -->
+      <div class="mountain-img-wrap">
+        <img
+          src="/bucketlist_mountain.jpg"
+          alt="Mountain climb — one item on the list"
+          class="mountain-photo"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- The list -->
+  <div class="bucket-list-sec">
+    <div class="bucket-inner">
+      <div class="bucket-cats">
+        {bucketData.categories.map(cat => (
+          <div class="bcat">
+            <h3><span class="cn">{cat.num} · </span>{cat.title}</h3>
+            <div>
+              {cat.items.map(item => (
+                <div class="bi">
+                  <span class="bi-num">{item.num}</span>
+                  <div>
+                    <span class="bi-title">{item.title}</span>
+                    <span class="bi-detail">{item.detail}</span>
+                  </div>
+                  <span class={`badge b-${item.status === 'in-progress' ? 'ip' : item.status}`}>
+                    {badgeLabel[item.status as Status]}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="bucket-cta">
+        <p>
+          See something on this list you can move? A connection, a room, a referral —
+          even half a degree closer than I am now. Reach out on LinkedIn. If it happens,
+          I'll write about it — with your permission, I'll acknowledge your role. If
+          you'd rather stay anonymous, that works too. Either way, the favour will be returned.
+        </p>
+        <a href="https://www.linkedin.com/in/bssennoga" target="_blank" rel="noopener" class="btn btn--primary">
+          Connect on LinkedIn <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<style>
+  .mountain-img-wrap {
+    flex-shrink: 0;
+  }
+  .mountain-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid var(--rule);
+    display: block;
+  }
+  @media (max-width: 580px) {
+    .mountain-photo { aspect-ratio: 16/9; }
+  }
+</style>

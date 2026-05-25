@@ -1,0 +1,104 @@
+{
+  "categories": [
+    {
+      "id": "places",
+      "num": "01",
+      "title": "Places & Experiences",
+      "items": [
+        {
+          "num": "1.1",
+          "title": "Watch a live World Cup match",
+          "detail": "Anywhere. Any round. Just once in a stadium with 80,000 people.",
+          "status": "open"
+        },
+        {
+          "num": "1.2",
+          "title": "Safari in the Serengeti during the Great Migration",
+          "detail": "The real one — not a reserve.",
+          "status": "open"
+        },
+        {
+          "num": "1.3",
+          "title": "Northern Lights — Iceland or Tromsø",
+          "detail": "With the family.",
+          "status": "open"
+        }
+      ]
+    },
+    {
+      "id": "people",
+      "num": "02",
+      "title": "People & Conversations",
+      "items": [
+        {
+          "num": "2.1",
+          "title": "A real conversation with a sitting Head of State",
+          "detail": "Not a photo op. An actual conversation about governance and policy.",
+          "status": "open"
+        },
+        {
+          "num": "2.2",
+          "title": "Meal with someone who built something that lasted 50+ years",
+          "detail": "And ask what they'd do differently.",
+          "status": "open"
+        },
+        {
+          "num": "2.3",
+          "title": "Guest on a podcast with 100K+ listeners",
+          "detail": "Talking AI, governance, or diaspora leadership.",
+          "status": "in-progress"
+        }
+      ]
+    },
+    {
+      "id": "work",
+      "num": "03",
+      "title": "Work & Impact",
+      "items": [
+        {
+          "num": "3.1",
+          "title": "Publish a book that sells 10,000+ copies",
+          "detail": "The premarital counselling workbook or the parenting book.",
+          "status": "in-progress"
+        },
+        {
+          "num": "3.2",
+          "title": "Brief a government minister on AI policy",
+          "detail": "In a room where the policy is actually being written.",
+          "status": "open"
+        },
+        {
+          "num": "3.3",
+          "title": "Complete the PhD",
+          "detail": "LLM adoption in nonprofits. University of Alberta.",
+          "status": "in-progress"
+        }
+      ]
+    },
+    {
+      "id": "personal",
+      "num": "04",
+      "title": "Personal Milestones",
+      "items": [
+        {
+          "num": "4.1",
+          "title": "Watch my daughter perform at a venue she's proud of",
+          "detail": "50 people or 5,000 — doesn't matter.",
+          "status": "open"
+        },
+        {
+          "num": "4.2",
+          "title": "See Haven Icecream open a second location",
+          "detail": "The hub-and-spoke model working as designed.",
+          "status": "open"
+        },
+        {
+          "num": "4.3",
+          "title": "Return to Kampala with my kids",
+          "detail": "No agenda. Just the city.",
+          "status": "open"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Brian Ssennoga — AI Literacy, Policy & Governance, and Human Capital Development · Edmonton, Alberta"
+  pathname="/"
+>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          Edmonton-based consultant working on
+          <span class="gold">AI Literacy, Policy &amp; Governance,</span>
+          and Human Capital Development — including
+          <span class="gold">helping Newcomer professionals, couples, and families thrive in Canada.</span>
+        </h1>
+        <p class="hero-loc">Edmonton, Alberta · by way of Kampala, Uganda</p>
+
+        <!-- Primary CTA: How I Got Here -->
+        <div class="hero-cta">
+          <a href="/how-i-got-here/" class="btn btn--primary">
+            How I Got Here <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Secondary invitation + CTA -->
+        <p class="hero-invite">
+          Or read the ideas, arguments, and the occasional provocation —
+        </p>
+        <a href="/written-thoughts/" class="btn btn--gold">
+          My Written Thoughts <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="hero-portrait-wrap">
+        <img
+          src="/portrait.jpg"
+          alt="Brian Ssennoga — consultant, Edmonton, Alberta"
+          class="portrait-img"
+          width="520"
+          height="650"
+          loading="eager"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'"
+        />
+        <div class="portrait-placeholder" style="display:none"></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-invite {
+    margin-top: 1.25rem;
+    margin-bottom: .6rem;
+    font-size: .88rem;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 28em;
+  }
+</style>

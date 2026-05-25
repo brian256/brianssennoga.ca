@@ -1,0 +1,40 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('writing', ({ data }) => !data.draft);
+  return entries.map(entry => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+interface Props { entry: CollectionEntry<'writing'>; }
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout
+  title={`${entry.data.title} — Brian Ssennoga`}
+  description={entry.data.description}
+  pathname={`/writing/${entry.slug}/`}
+>
+  <div style="background: var(--bg);">
+    <div class="w">
+      <div class="prose-wrap">
+        <p class="prose-meta">
+          {fmtDate(entry.data.date)}
+          {entry.data.tags.length > 0 && <span> · {entry.data.tags.join(' · ')}</span>}
+        </p>
+        <h1>{entry.data.title}</h1>
+        <p class="deck">{entry.data.description}</p>
+        <Content />
+        <a href="/written-thoughts/" class="prose-back">← My Written Thoughts</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
