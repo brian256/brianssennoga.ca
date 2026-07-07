@@ -1,0 +1,91 @@
+---
+title: "From My Session Credits to Your Budget Line: Four Questions Before You Defend the AI Budget Line Item"
+description: "Four budgeting questions — for anyone from a solo Claude subscriber to a ministry finance office — before you defend an AI line item this fiscal cycle."
+date: 2026-07-07
+draft: false
+tags: ["AI Policy", "Governance"]
+---
+
+**AI POLICY & GOVERNANCE**
+
+**From My Session Credits to Your Budget Line:** Four Questions Before You Defend the AI Budget Line Item
+
+*This is written for the person who has to put a number next to "AI" in the next fiscal budget and defend it — not for the person deciding whether to renew a subscription.*
+
+---
+
+Most days now, before I even type a prompt, Claude has ensured I make a small but routine decision: which model, and how much effort I let it spend getting there. Sonnet for this one. A lighter model for that one. Don't let it think too hard about something that doesn't need thinking hard about.
+
+I've been doing this long enough that it stopped feeling like a decision and started feeling like instinct — watch the session credits, match the tool to the task, don't spend what you don't need to spend. This is my attempt at cost management, running quietly inside one subscription, with no committee and no one to answer to but myself.
+
+The instinct I've built managing my own AI habits isn't a smaller version of what an organisation needs to do with its AI budget. It's the same instinct. What changes is who's asking, and how much is riding on the answer. If you're the one who has to defend an AI line item to a board, a donor, or a fiscal committee next quarter, the rest of this piece is for you. I should say plainly what lane this is: I'm not the person to ask how a model works under the hood. I'm the person who's spent two decades watching organisations budget for technology they don't yet understand — this is that lane, and my own habits are proof the discipline is real.
+
+## The Reservoir Wasn't Sized for This
+
+Edmonton and the prairies have had a run of unusually heavy rain the last couple of seasons — not necessarily more of it across the year, but more of it arriving at once than the storm systems were built to carry. That's not a claim about why the weather changed. It's simpler than that: the infrastructure wasn't sized for what's actually arriving now, whatever the reason.
+
+AI capability is having the same kind of season. [Model inference costs have dropped roughly 75% in the last 18 months](https://aws.amazon.com/blogs/enterprise-strategy/you-can-manage-forecast-and-evaluate-ai-costs/) — the resource got radically more abundant, and it arrived faster than most organisations' budgeting habits were built to absorb. Abundance without matching infrastructure doesn't feel like a gift. It feels like a flood.
+
+The numbers back this up in both directions at once. [Gartner forecasts worldwide AI spending will hit $2.52 trillion in 2026 — a 44% jump year-over-year](https://www.gartner.com/en/newsroom/press-releases/2026-1-15-gartner-says-worldwide-ai-spending-will-total-2-point-5-trillion-dollars-in-2026), even as the underlying cost of running the models keeps falling. Cheaper per unit, bigger in total. That's not a contradiction to explain away — it's a flood, and a well-run water co-op doesn't respond to more rain by asking fewer questions about the pump house. It asks the same questions, more precisely, before the rain decides for them.
+
+If you grew up where I did, you know a borehole: households pool money, take turns at the pump, and feel it immediately when the pump fails. If you're reading this from the prairies, you know the same story as a rural water co-op — pooled contribution, shared maintenance, a board of neighbours who all feel it when something breaks. Same instinct, different postal code.
+
+How we think about AI spending matters differently depending on who's reading. For a company or an NGO board, these land directly in the next budget meeting. For a ministry or public agency, team or unit considerations don't replace the approval chain — annual estimates, parliamentary sign-off, donor-conditioned tranches — they sit *before* it. Think of this as a technical team's pre-submission diagnostic, not a substitute for understanding how the money actually gets approved. I'm not claiming to have solved procurement. I'm offering something a CIO or permanent secretary's technical staff can run internally before the number ever leaves the building.
+
+## Question One: What Are You Actually Buying?
+
+*Anchor: don't drill a deep borehole to fill one bucket.*
+
+The single largest, most fixable source of AI overspend right now is simple: organisations are paying for far more model than most tasks need. [Glean's CEO put the number at roughly 95% of enterprise AI usage still running on the most expensive frontier models](https://www.cnbc.com/2026/06/26/openai-anthropic-new-ai-spending-reality-as-users-shift-to-efficiency.html), including for jobs — classification, extraction, routine drafting — that a smaller, cheaper model handles just as well. To be fair, Glean sells the routing tools that fix exactly this problem, so treat the number as informed rather than disinterested. It's still worth citing, because the figure lines up with what OpenAI and Anthropic are independently telling enterprise customers about their own usage patterns.
+
+This isn't a theoretical fix. [Organisations that align model size to task complexity have cut inference costs by 60–80%](https://aws.amazon.com/blogs/enterprise-strategy/you-can-manage-forecast-and-evaluate-ai-costs/), and off-the-shelf tools already exist to route each prompt to the most cost-appropriate model automatically. One AI startup's CEO put it more bluntly — describing a full switch off a frontier model to a cheaper alternative and watching the [cost curve "crash to the ground,"](https://www.cnbc.com/2026/06/26/openai-anthropic-new-ai-spending-reality-as-users-shift-to-efficiency.html) saving millions within months.
+
+**What changes in your next budget meeting:** ask for a one-page breakdown of what percentage of your organisation's AI usage runs on frontier versus lighter models. If nobody can answer that yet, that absence is your first finding, not a footnote.
+
+## Question Two: Who's Spending, and Does Anyone Know?
+
+*Anchor: a pump house where every household has a key, and nobody's counting who's turning it on.*
+
+This is where individual discipline stops scaling on its own. [Gartner projects the average Fortune 500 enterprise will run more than 150,000 AI agents by 2028, up from fewer than 15 in 2025](https://www.gartner.com/en/newsroom/press-releases/2026-04-28-gartner-identifies-six-steps-to-manage-artificial-intelligence-agent-sprawl) — the wild wild west, in just two years — and only about 13% of organisations currently believe they have adequate governance in place to manage that growth. That gap is not a future risk. It's the current state of most AI budgets: a great deal of individually reasonable usage adding up to a bill nobody planned for, because nobody was counting.
+
+You don't need enterprise tooling to close most of this gap. You need one person with the standing authority to ask, every quarter: what's running, who owns it, and does it still need to exist.
+
+**What changes in your next budget meeting:** name that person, if you haven't already. An inventory with no owner isn't governance — it's a floating list.
+
+## Question Three: What Phase Are You In — and Are You Budgeting Like It?
+
+*Anchor: are you still drilling the well, or should you already be irrigating with what you've built?*
+
+There's a genuinely useful three-phase way to think about this, laid out by a former CFO now advising enterprises on AI spend. In **Phase 1**, you're building the foundation — data readiness, security, upskilling, initial pilots — and [compute itself is typically only 10–15% of total investment](https://aws.amazon.com/blogs/enterprise-strategy/you-can-manage-forecast-and-evaluate-ai-costs/). This phase should be budgeted like any early-stage investment: controlled, measured, tied to learning. In **Phase 2**, adoption grows and total inference spend rises, but unit cost per outcome falls as caching, routing, and better prompting kick in — budget this phase in ranges, not fixed point estimates. In **Phase 3**, AI is embedded enough that you stop asking what a model costs and start asking what it costs to automate a process or accelerate a decision — spend now ties directly to outcomes.
+
+Most of the "AI sticker shock" headlines this year come from organisations budgeting for one phase while operating in another — expecting Phase 3 returns from Phase 1 spending, or the reverse.
+
+**What changes in your next budget meeting:** name your phase out loud, and check that your budget structure — fixed versus flexible, point estimate versus range — actually matches it.
+
+## Question Four: What Does This Cost From Where You're Standing?
+
+*Anchor: the pump's diesel is priced in dollars and paid for in shillings, while the rains that would make the diesel unnecessary get less predictable every year.*
+
+This is the question most cost frameworks written for Fortune 500 boardrooms never ask, and it changes the answer entirely for an SME or NGO board in Kampala or Red Deer. [Cloud compute in Nigeria, Kenya, and Ghana runs 25 to 40% more expensive than equivalent services in Europe or North America](https://guardian.ng/opinion/priced-out-of-the-future-confronting-the-rising-cost-of-ai-in-africa/), driven by data-centre scarcity, bandwidth limits, and unreliable power, and it's priced in a currency that has nothing to do with the budget cycle funding it. (A caveat here: this is not a central-bank or African Union–verified figure, and I'd welcome corrections from anyone closer to the data than I am.)
+
+The same reporting notes Africa hosts less than 1% of global high-performance computing capacity, against roughly a third each for the US and China. That imbalance isn't background colour — it's a sovereign compute question wearing a budgeting question's clothes. A ministry weighing this quarter's AI line item isn't only doing currency math. It's also, quietly, deciding how much of its digital future runs on infrastructure it doesn't own and can't independently price.
+
+That's a policy fight playing out at the level of the African Union and Smart Africa's continental compute initiatives, not something four budgeting questions resolve. What these questions can do is help one institution ask sharper questions inside a dependency it didn't choose, while that larger fight continues above its pay grade — and mine.
+
+**What changes in your next budget meeting:** if your organisation operates outside North America or Europe, write an explicit currency-exposure line next to your AI budget, and one sentence naming how much of that number rests on infrastructure you don't own. Don't fold it silently into a general contingency line.
+
+## The Smallest Possible Version of the Argument
+
+I've already been running all four questions, at the smallest possible scale, with a subscription instead of a budget line. Which model for which task is question one. Noticing what I'm running that I don't actually need is question two, for a household of one. Knowing whether a task needs real depth or a quick pass is question three. And I know exactly what my subscription costs me in Canadian dollars, and that the same subscription, in the same currency, buys someone in Kampala a very different fraction of a month's income — question four, in miniature.
+
+Four questions. One subscription or one national budget. The discipline doesn't change size just because the number in front of it does. The prairies didn't need less rain. They needed infrastructure sized for the rain that's actually arriving, not the drought everyone had already budgeted for.
+
+Before your next fiscal cycle, put these four questions on the table, in this order: What are you actually buying? Who's spending, and does anyone know? What phase are you in, and does your budget match it? And what does this cost from where you're standing, in the currency you actually report in, on infrastructure you may or may not own?
+
+The fear isn't the deluge. It's budgeting like the drought is still on.
+
+---
+
+**About the Author**
+
+Brian A. Ssennoga is an AI Policy & Governance Practitioner and ML Project Manager at the Alberta Machine Intelligence Institute (Amii), one of Canada's three national AI institutes. AMII is where he works — it is not who he speaks for, and nothing here reflects an AMII position or any AMII client relationship. His standing to write specifically about AI adoption in African institutions comes from elsewhere: founding Guild Digital and years of hands-on systems work, including rCHMIS, in resource-constrained and humanitarian contexts across Uganda and the region. He holds MBA, PMP, and CGEIT designations. His writing is published at [brianssennoga.ca](https://brianssennoga.ca).
